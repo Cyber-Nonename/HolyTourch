@@ -1,0 +1,70 @@
+_G.AutoHolyTorch = true
+
+function TP(Pos)
+
+Distance = (Pos.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+
+if Distance < 250 then
+
+Speed = 700000
+
+elseif Distance >= 1000 then
+
+Speed = 200
+
+end
+
+game:GetService("TweenService"):Create(
+
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
+
+TweenInfo.new(Distance/Speed, Enum.EasingStyle.Linear),
+
+{CFrame = Pos}
+
+):Play()
+
+_G.Clip = true
+
+wait(Distance/Speed)
+
+_G.Clip = false
+
+end
+
+spawn(function()
+
+while wait() do
+
+if _G.AutoHolyTorch then
+
+pcall(function()
+
+wait(1)
+
+TP(CFrame.new(-10752, 417, -9366))
+
+wait(1)
+
+TP(CFrame.new(-11672, 334, -9474))
+
+wait(1)
+
+TP(CFrame.new(-12132, 521, -10655))
+
+wait(1)
+
+TP(CFrame.new(-13336, 486, -6985))
+
+wait(1)
+
+TP(CFrame.new(-13489, 332, -7925))
+
+end)
+
+end
+
+end
+
+end)
+
